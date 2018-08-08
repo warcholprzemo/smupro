@@ -1,0 +1,55 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lista sal kinowych</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <h3>Lista wszystkich sal kinowych</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Kino</th>
+                    <th>Adres</th>
+                    <th>Numer sali</th>
+                    <th>Liczba zwykłych miejsc</th>
+                    <th>Liczba VIP miejsc</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for hall in object_list %}
+                <tr>
+                    <td>{{ hall.id }}</td>
+                    <td>{{ hall.cinema }}</td>
+                    <td>{{ hall.cinema.address }}</td>
+                    <td>{{ hall.number }}</td>
+                    <td>{{ hall.standard_places }}</td>
+                    <td>{{ hall.vip_places }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div style="display: block;">
+            {% comment %}
+                -- A TO PRZYKLAD JAK ZROBIC FORMULARZ BEZPOŚREDNIO Z FILTRU --
+                <form action="" method="get">
+                    {{ myfilter.form.as_p }}
+                    <input type="submit" />
+                </form>
+            {% endcomment %}
+
+            {% if myfilter.qs.exists %}
+                <label>Istnieją takie obiekty w bazie (posortowane po nazwie malejąco):</label>
+                <ul>
+                {% for obj in myfilter.qs|dictsortreversed:"name" %}
+                    <li>{{ obj }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <label>Nie ma obiektów o podanych parametrach</label>
+            {% endif %}
+        </div>
+    </body>
+</html>
