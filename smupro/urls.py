@@ -48,4 +48,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('processform/', SomeDataPost.as_view(), name='some_data_post'),
     path('some-data-list/', SomeDataList.as_view(), name='some_data_list'),
+    path('tictactoe/', include('tictactoe.urls')),
 ]
