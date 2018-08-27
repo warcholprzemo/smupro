@@ -16,6 +16,6 @@ class SaveResult(generics.CreateAPIView):
     serializer_class = TicTacToeSerializer
 
 
-class ListResult(generics.GenericAPIView):
-    def get(self, request, *args, **kwargs):
-        raise TicTacException
+class ListResult(generics.ListAPIView):
+    queryset = TicTacToe.objects.all()
+    serializer_class = TicTacToeSerializer

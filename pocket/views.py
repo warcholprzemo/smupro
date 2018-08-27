@@ -9,7 +9,7 @@ from pocket.serializers import SomeDataSerializer
 
 class PocketException(APIException):
     status_code = 500
-    default_detail = [{"ERROR": "Random 50% probably error"}]
+    default_detail = [{"ERROR": "Random 10% probably error"}]
 
 
 class SomeDataPost(generics.CreateAPIView):
@@ -22,6 +22,6 @@ class SomeDataList(generics.ListAPIView):
     serializer_class = SomeDataSerializer
 
     def get(self, request, *args, **kwargs):
-        if random.random() > 0.5:
+        if random.random() < 0.1:
             raise PocketException()
         return super().get(request, *args, **kwargs)
