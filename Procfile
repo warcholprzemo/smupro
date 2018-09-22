@@ -1,1 +1,1 @@
-web: gunicorn smupro.wsgi
+web: gunicorn smupro.wsgi --log-file - --log-level debug
