@@ -1,11 +1,12 @@
 from django.core.exceptions import ValidationError
 from django.db import models
 import django_filters
-from pygments.lexers import get_all_lexers
+#from pygments.lexers import get_all_lexers
 
 
-LEXERS = [item for item in get_all_lexers() if item[1]]
-LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+#LEXERS = [item for item in get_all_lexers() if item[1]]
+#LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+LANGUAGE_CHOICES = [('python', 'python'), ('java', 'java')]
 
 class Cinema(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False)
