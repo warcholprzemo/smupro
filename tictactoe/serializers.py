@@ -4,7 +4,7 @@ from tictactoe.models import TicTacToe, RESULT_CHOICES
 
 
 class TicTacToeSerializer(serializers.ModelSerializer):
-    game_date = serializers.DateTimeField(format='%Y-%m-%d %H:%M')
+    game_date = serializers.DateTimeField(format='%Y-%m-%d %H:%M', read_only=True)
 
     class Meta:
         model = TicTacToe
