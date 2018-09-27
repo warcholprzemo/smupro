@@ -69,7 +69,7 @@ export class HallOfFame extends React.Component{
     render(){
         return(
             <div>
-                <SomeDataList endpoint_url='http://localhost:8000/tictactoe/allgames/'
+                <SomeDataList endpoint_url='https://shielded-beach-87349.herokuapp.com/tictactoe/allgames/'
                               custom_label='Hall of fame'
                 />
             </div>

@@ -18,7 +18,7 @@ export class CinemaList extends React.Component{
     }
 
     fillCinemas(){
-        axios.get('http://localhost:8000/multiplex/cinemas/')
+        axios.get('https://shielded-beach-87349.herokuapp.com/multiplex/cinemas/')
             .then(resp => {
                 this.setState({
                     cinemas: resp.data
@@ -65,7 +65,7 @@ export class CinemaList extends React.Component{
 
 export class CinemaEdit extends React.Component{
     render(){
-        const endpoint_url='http://localhost:8000/multiplex/cinemas/' + this.props.match.params.id +"/";
+        const endpoint_url='https://shielded-beach-87349.herokuapp.com/multiplex/cinemas/' + this.props.match.params.id +"/";
         return(
             <div>
                 <SomeDataList endpoint_url={endpoint_url}

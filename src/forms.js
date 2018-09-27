@@ -15,7 +15,7 @@ export class SimpleForm extends React.Component {
         event.preventDefault();
         const data = new FormData(event.target); //event.target !!
 
-        fetch('http://localhost:8000/processform/', {
+        fetch('https://shielded-beach-87349.herokuapp.com/processform/', {
             method: 'POST',
             body: data,
         })
@@ -60,7 +60,7 @@ export class SimpleForm extends React.Component {
                 <h1>Simple Form</h1>
                 <form method="POST" className="simple-form"
                       onSubmit={this.handleSubmit}
-                      action="http://localhost:8000/processform/">
+                      action="https://shielded-beach-87349.herokuapp.com/processform/">
                     <p>
                         <label>Some text</label>
                         <input type="text" defaultValue="abc" name="sometext" />
