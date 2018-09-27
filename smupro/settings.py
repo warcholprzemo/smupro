@@ -27,7 +27,7 @@ SECRET_KEY = 'f7qt5!2n)!=7%#(9xy&1$-j)#k16sbozh!d)4sv=#0g+v(&+6h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shielded-beach-87349.herokuapp.com', '127.0.0.1:8000']
 
 
 # Application definition
@@ -152,7 +152,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #STATICFILES_FINDERS = [
 #    'django.contrib.staticfiles.finders.FileSystemFinder',
