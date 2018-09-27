@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from multiplex.views import HallList
 from pocket.views import SomeDataList, SomeDataPost
+from django.views.generic import TemplateView
 
 
 # # I don't need this now... TODO: move somwehere else
@@ -41,10 +42,12 @@ from pocket.views import SomeDataList, SomeDataPost
 # Additionally, we include login URLs for the browsable API
 
 urlpatterns = [
+    re_path('.*', TemplateView.as_view(template_name='index.html')),
+
     path('admin/', admin.site.urls),
     path('multiplex/', include('multiplex.urls')),
     #path('', include(router.urls)),
-    path('', HallList.as_view(), name='main-page'),
+    #path('', HallList.as_view(), name='main-page'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('processform/', SomeDataPost.as_view(), name='some_data_post'),
     path('some-data-list/', SomeDataList.as_view(), name='some_data_list'),
