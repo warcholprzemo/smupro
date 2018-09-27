@@ -42,8 +42,6 @@ from django.views.generic import TemplateView
 # Additionally, we include login URLs for the browsable API
 
 urlpatterns = [
-    re_path('.*', TemplateView.as_view(template_name='index.html')),
-
     path('admin/', admin.site.urls),
     path('multiplex/', include('multiplex.urls')),
     #path('', include(router.urls)),
@@ -52,4 +50,6 @@ urlpatterns = [
     path('processform/', SomeDataPost.as_view(), name='some_data_post'),
     path('some-data-list/', SomeDataList.as_view(), name='some_data_list'),
     path('tictactoe/', include('tictactoe.urls')),
+
+    re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]
