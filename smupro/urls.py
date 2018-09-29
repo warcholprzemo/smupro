@@ -43,13 +43,13 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('multiplex/', include('multiplex.urls')),
+    path('api/multiplex/', include('multiplex.urls')),
     #path('', include(router.urls)),
     #path('', HallList.as_view(), name='main-page'),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('processform/', SomeDataPost.as_view(), name='some_data_post'),
-    path('some-data-list/', SomeDataList.as_view(), name='some_data_list'),
-    path('tictactoe/', include('tictactoe.urls')),
+    path('api/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/processform/', SomeDataPost.as_view(), name='some_data_post'),
+    path('api/some-data-list/', SomeDataList.as_view(), name='some_data_list'),
+    path('api/tictactoe/', include('tictactoe.urls')),
 
     re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]
