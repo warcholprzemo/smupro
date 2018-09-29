@@ -27,7 +27,7 @@ SECRET_KEY = 'f7qt5!2n)!=7%#(9xy&1$-j)#k16sbozh!d)4sv=#0g+v(&+6h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shielded-beach-87349.herokuapp.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['shielded-beach-87349.herokuapp.com']
 
 
 # Application definition
@@ -83,32 +83,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'smupro.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-"""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'smupro',
-        'USER': 'smutnyuser',
-        'PASSWORD': 'smutnyuser',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-"""
-
-#DATABASE_URL = 'postgresql:///postgresql'
-#DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 DATABASES = {'default': dj_database_url.config()}
 
 # Password validation
@@ -156,12 +130,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.django.CompressedManifestStaticFilesStorage'
 
-#STATICFILES_FINDERS = [
-#    'django.contrib.staticfiles.finders.FileSystemFinder',
-#    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#]
 
-#CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:3000',
     'localhost:3000',
@@ -177,3 +146,10 @@ REST_FRAMEWORK = {
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+
+IS_PRODUCTION = True
+try:
+    from .local_settings import *
+except ImportError:
+    pass

@@ -13,11 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path, re_path
+from django.views.generic import TemplateView
+
 from multiplex.views import HallList
 from pocket.views import SomeDataList, SomeDataPost
-from django.views.generic import TemplateView
+
 
 
 # # I don't need this now... TODO: move somwehere else
@@ -42,14 +45,21 @@ from django.views.generic import TemplateView
 # Additionally, we include login URLs for the browsable API
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('api/multiplex/', include('multiplex.urls')),
-    #path('', include(router.urls)),
-    #path('', HallList.as_view(), name='main-page'),
     path('api/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/processform/', SomeDataPost.as_view(), name='some_data_post'),
     path('api/some-data-list/', SomeDataList.as_view(), name='some_data_list'),
     path('api/tictactoe/', include('tictactoe.urls')),
-
-    re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]
+
+if settings.IS_PRODUCTION:
+    extensions = [
+        re_path('.*', TemplateView.as_view(template_name='index.html')),
+    ]
+else:
+    extensions = [
+        path('admin/', admin.site.urls),
+        # path('', include(router.urls)),
+        path('', HallList.as_view(), name='main-page'),
+    ]
+urlpatterns.extend(extensions)
