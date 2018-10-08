@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import {SomeDataList} from './somedatalist'
-import axios from 'axios';
 import {Link} from 'react-router-dom';
 
 export class CinemaList extends React.Component{
@@ -18,12 +16,17 @@ export class CinemaList extends React.Component{
     }
 
     fillCinemas(){
-        axios.get('https://shielded-beach-87349.herokuapp.com/api/multiplex/cinemas/')
-            .then(resp => {
-                this.setState({
-                    cinemas: resp.data
-                });
+        fetch('https://shielded-beach-87349.herokuapp.com/api/multiplex/cinemas/', {
+            method: 'GET',
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(responseJson => {
+            this.setState({
+                cinemas: responseJson,
             });
+        });
     }
 
     render(){
