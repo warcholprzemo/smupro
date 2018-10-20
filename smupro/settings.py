@@ -67,7 +67,7 @@ ROOT_URLCONF = 'smupro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'build')],
+        'DIRS': [os.path.join(BASE_DIR, 'build'), os.path.join(BASE_DIR, 'dist')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,6 +134,7 @@ STATICFILES_STORAGE = 'whitenoise.django.CompressedManifestStaticFilesStorage'
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:3000',
     'localhost:3000',
+    'localhost:8080',
 )
 
 REST_FRAMEWORK = {

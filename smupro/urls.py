@@ -54,7 +54,7 @@ urlpatterns = [
 
 if settings.IS_PRODUCTION:
     extensions = [
-        re_path('.*', TemplateView.as_view(template_name='../dist/index.html')),
+        re_path('.*', TemplateView.as_view(template_name='index.html')),
     ]
 else:
     extensions = [
