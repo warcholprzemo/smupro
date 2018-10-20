@@ -35,10 +35,14 @@ module.exports = {
             }
         ]
     },
+    entry: "./src/index.js",
+    output: {
+        filename: "./static/index.js"
+    },
     plugins: [
         new HtmlWebPackPlugin({
             template: "./public/index.html",
-            filename: "./index.html"
+            filename: "../prod-template/index.html"
         })
     ]
 };
