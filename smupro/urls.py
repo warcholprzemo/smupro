@@ -54,8 +54,9 @@ urlpatterns = [
 ]
 
 if settings.IS_PRODUCTION:
-    extensions = [
-        re_path('dist/static/index.js', TemplateView.as_view(template_name='index.html')),
+    from django.conf.urls.static import static
+
+    extensions = static("/dist/", document_root=settings.STATICFILES_DIRS[0]) + [
         re_path('.*', TemplateView.as_view(template_name='index.html')),
     ]
 else:
