@@ -59,7 +59,7 @@ export class SimpleForm extends React.Component {
                 <h1>Simple Form</h1>
                 <form method="POST" className="simple-form"
                       onSubmit={this.handleSubmit}
-                      action=API_URL+"/api/processform/">
+                      action={API_URL+"/api/processform/"}>
                     <p>
                         <label>Some text</label>
                         <input type="text" defaultValue="abc" name="sometext" />
