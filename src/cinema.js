@@ -16,7 +16,7 @@ export class CinemaList extends React.Component{
     }
 
     fillCinemas(){
-        fetch('https://shielded-beach-87349.herokuapp.com/api/multiplex/cinemas/', {
+        fetch(API_URL + '/api/multiplex/cinemas/', {
             method: 'GET',
         })
         .then(response => {
@@ -68,7 +68,7 @@ export class CinemaList extends React.Component{
 
 export class CinemaEdit extends React.Component{
     render(){
-        const endpoint_url='https://shielded-beach-87349.herokuapp.com/api/multiplex/cinemas/' + this.props.match.params.id +"/";
+        const endpoint_url=API_URL + '/api/multiplex/cinemas/' + this.props.match.params.id +"/";
         return(
             <div>
                 <SomeDataList endpoint_url={endpoint_url}

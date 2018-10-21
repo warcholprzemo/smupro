@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import {SomeDataList} from './somedatalist';
 
@@ -69,7 +68,7 @@ export class HallOfFame extends React.Component{
     render(){
         return(
             <div>
-                <SomeDataList endpoint_url='https://shielded-beach-87349.herokuapp.com/api/tictactoe/allgames/'
+                <SomeDataList endpoint_url=API_URL + '/api/tictactoe/allgames/'
                               custom_label='Hall of fame'
                 />
             </div>
