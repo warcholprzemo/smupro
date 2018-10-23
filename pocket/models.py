@@ -19,3 +19,13 @@ class SomeData(models.Model):
     def save(self, *args, **kwargs):
         self.clean()
         super().save(*args, **kwargs)
+
+
+class Blog(models.Model):
+    title = models.CharField(blank=False, max_length=200)
+    content = models.TextField(blank=False)
+    created = models.DateTimeField(auto_now_add=True)
+    published = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['-id']

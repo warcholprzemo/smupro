@@ -19,23 +19,63 @@ const global_input = `
 * Unordered list item
 `
 
-export class TryMarkdown extends React.Component{
+export class BlogList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            foo_input: "# This is a header\n\nAnd this is a paragraph  \nAnd this is another line"
+            blogs: [],
+            remote_url: API_URL + '/api/blog/'
         }
     }
 
+    componentDidMount(){
+        this.fillBlogList();
+    }
+
+    fillBlogList(){
+        fetch(this.state.remote_url, {
+            method: 'GET',
+        })
+        .then(response => {
+            //TODO: handle 4** and 5** statuses
+            return response.json();
+        })
+        .then(response_json => {
+            this.setState({
+                blogs: response_json
+            });
+        });
+    }
+
     render(){
+        let rows = [];
+        for(let i=0; i<this.state.blogs.length; i++){
+            let blog = this.state.blogs[i];
+            rows.push(
+                <tr key={ blog.id }>
+                    <td>{ blog.id }</td>
+                    <td>{ blog.title }</td>
+                    <td>{ blog.created }</td>
+                </tr>
+            )
+        }
         return(
             <div>
-                <h1>Try to render Markdown</h1>
-                <div className="try-markdown-main">
-                    <ReactMarkdown source={global_input} />
-                </div>
+                <h1>Lista wpisów</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tytuł</th>
+                            <th>Data utworzenia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { rows }
+                    </tbody>
+                </table>
             </div>
-        )
+        );
     }
 }
 

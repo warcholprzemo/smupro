@@ -3,8 +3,8 @@ import random
 from rest_framework import generics
 from rest_framework.exceptions import APIException
 
-from pocket.models import SomeData
-from pocket.serializers import SomeDataSerializer
+from pocket.models import Blog, SomeData
+from pocket.serializers import BlogSerializer, SomeDataSerializer
 
 
 class PocketException(APIException):
@@ -25,3 +25,8 @@ class SomeDataList(generics.ListAPIView):
         if random.random() < 0.1:
             raise PocketException()
         return super().get(request, *args, **kwargs)
+
+
+class BlogList(generics.ListAPIView):
+    queryset = Blog.objects.filter(published=True)
+    serializer_class = BlogSerializer

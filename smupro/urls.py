@@ -19,7 +19,7 @@ from django.urls import include, path, re_path
 from django.views.generic import TemplateView
 
 from multiplex.views import HallList
-from pocket.views import SomeDataList, SomeDataPost
+from pocket.views import BlogList, SomeDataList, SomeDataPost
 
 
 
@@ -51,6 +51,7 @@ urlpatterns = [
     path('api/processform/', SomeDataPost.as_view(), name='some_data_post'),
     path('api/some-data-list/', SomeDataList.as_view(), name='some_data_list'),
     path('api/tictactoe/', include('tictactoe.urls')),
+    path('api/blog/', BlogList.as_view(), name='blog_list')
 ]
 
 if settings.IS_PRODUCTION:
