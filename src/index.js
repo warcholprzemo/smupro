@@ -7,7 +7,7 @@ import {SizeBoardInput, ActionButton, BigTicTacLabel,
 import {CinemaList, CinemaEdit} from './cinema';
 import {SimpleForm} from './forms';
 import {SomeDataList} from './somedatalist';
-import {BlogList} from './try-markdown';
+import {BlogDetail, BlogList} from './try-markdown';
 
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
@@ -41,6 +41,7 @@ class BaseStructure extends React.Component {
                         }/>
                         <Route path="/halloffame" component={HallOfFame} />
                         <Route exact path="/blog" component={BlogList} />
+                        <Route exact path="/blog/:id" component={BlogDetail} />
                     </div>
                 </div>
             </Router>
