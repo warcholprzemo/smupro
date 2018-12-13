@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path, re_path
 from django.views.generic import TemplateView
 
@@ -54,14 +55,7 @@ urlpatterns = [
     path('api/blog/', BlogList.as_view(), name='blog_list')
 ]
 
-if settings.IS_PRODUCTION:
-    from django.conf.urls.static import static
-    from django.views.static import serve
-    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
-    #extensions = serve("/dist/", document_root=settings.STATICFILES_DIRS[0]) + [
-    #   re_path('.*', TemplateView.as_view(template_name='index.html')),
-    #]
+if settings.DEBUG is False:
     extensions = staticfiles_urlpatterns()
     extensions += [re_path('.*', TemplateView.as_view(template_name='index.html')),]
 else:

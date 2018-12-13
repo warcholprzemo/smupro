@@ -122,15 +122,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, "dist"),
+     os.path.join(BASE_DIR, "dist"),  # copy files from here into staticfiles (WhiteNoiseMiddleware likes it!)
 ]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#STATICFILES_STORAGE = 'spa.storage.SPAStaticFilesStorage'
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATIC_URL = '/static/'                                 # WhiteNoiseMiddleware likes it!
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')     # WhiteNoiseMiddleware likes it!
 
 
 CORS_ORIGIN_WHITELIST = (
@@ -151,7 +148,6 @@ REST_FRAMEWORK = {
 django_heroku.settings(locals())
 
 
-IS_PRODUCTION = True
 try:
     from .local_settings import *
 except ImportError:
