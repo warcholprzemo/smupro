@@ -129,7 +129,7 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'spa.storage.SPAStaticFilesStorage'
+#STATICFILES_STORAGE = 'spa.storage.SPAStaticFilesStorage'
 
 
 CORS_ORIGIN_WHITELIST = (
