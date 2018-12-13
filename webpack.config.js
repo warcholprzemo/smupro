@@ -47,7 +47,7 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         filename: "./staticfiles/index.js",
-        publicPath: "/static/staticfiles/index.js"
+        publicPath: "/static/"
     },
     plugins: [
         new HtmlWebPackPlugin({
