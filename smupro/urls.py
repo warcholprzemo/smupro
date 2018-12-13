@@ -57,9 +57,12 @@ urlpatterns = [
 if settings.IS_PRODUCTION:
     from django.conf.urls.static import static
 
-    extensions = static("/dist/", document_root=settings.STATICFILES_DIRS[0]) + [
-        re_path('.*', TemplateView.as_view(template_name='index.html')),
+    extensions = [
+       re_path('.*', TemplateView.as_view(template_name='index.html')),
     ]
+    #extensions = static("/dist/", document_root=settings.STATICFILES_DIRS[0]) + [
+    #    re_path('.*', TemplateView.as_view(template_name='index.html')),
+    #]
 else:
     extensions = [
         path('admin/', admin.site.urls),
