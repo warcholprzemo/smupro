@@ -30,3 +30,8 @@ class SomeDataList(generics.ListAPIView):
 class BlogList(generics.ListAPIView):
     queryset = Blog.objects.filter(published=True)
     serializer_class = BlogSerializer
+
+
+class BlogDetail(generics.RetrieveAPIView):
+    queryset = Blog.objects.filter(published=True)
+    serializer_class = BlogSerializer
