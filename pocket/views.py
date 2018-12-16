@@ -4,7 +4,7 @@ from rest_framework import generics
 from rest_framework.exceptions import APIException
 
 from pocket.models import Blog, SomeData
-from pocket.serializers import BlogSerializer, SomeDataSerializer
+from pocket.serializers import BlogSerializer, SomeDataSerializer, BlogNextPrevSerializer
 
 
 class PocketException(APIException):
@@ -34,4 +34,4 @@ class BlogList(generics.ListAPIView):
 
 class BlogDetail(generics.RetrieveAPIView):
     queryset = Blog.objects.filter(published=True)
-    serializer_class = BlogSerializer
+    serializer_class = BlogNextPrevSerializer
