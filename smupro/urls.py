@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.conf.urls.static import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path, re_path
 from django.views.generic import TemplateView
 from django.views.static import serve
@@ -61,16 +60,14 @@ urlpatterns = [
 ]
 
 if settings.DEBUG is False:
-    #extensions = staticfiles_urlpatterns()
-    extensions = []
-    extensions += [re_path(r'^media/(?P<path>.*)$', serve, kwargs=dict(document_root=settings.MEDIA_ROOT, show_indexes=True))]
-    #extensions += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    extensions += [re_path('.*', TemplateView.as_view(template_name='index.html')),]
+    extensions = [
+        re_path(r'^media/(?P<path>.*)$', serve, kwargs=dict(document_root=settings.MEDIA_ROOT, show_indexes=True)),
+        re_path('.*', TemplateView.as_view(template_name='index.html')),
+    ]
 else:
     extensions = [
         path('admin/', admin.site.urls),
         # path('', include(router.urls)),
         path('', HallList.as_view(), name='main-page'),
-    ]# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    extensions += [re_path(r'^media/(?P<path>.*)$', serve, kwargs=dict(document_root=settings.MEDIA_ROOT, show_indexes=True))]
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns.extend(extensions)
