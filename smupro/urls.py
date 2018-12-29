@@ -57,7 +57,7 @@ urlpatterns = [
     path('api/blog/<int:pk>/', BlogDetail.as_view(), name='blog_detail'),
     path('api/myimage/create/', MyImageCreate.as_view(), name='myimage_create'),
     path('api/myimage/list/', MyImageList.as_view(), name='myimage_list'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
 
 if settings.DEBUG is False:
     extensions = staticfiles_urlpatterns()
@@ -67,5 +67,5 @@ else:
         path('admin/', admin.site.urls),
         # path('', include(router.urls)),
         path('', HallList.as_view(), name='main-page'),
-    ]
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns.extend(extensions)
