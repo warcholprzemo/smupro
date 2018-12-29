@@ -63,7 +63,7 @@ urlpatterns = [
 if settings.DEBUG is False:
     #extensions = staticfiles_urlpatterns()
     extensions = []
-    extensions += [re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})]
+    extensions += [re_path(r'^media/(?P<path>.*)$', serve, document_root=settings.MEDIA_ROOT)]
     #extensions += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     extensions += [re_path('.*', TemplateView.as_view(template_name='index.html')),]
 else:
