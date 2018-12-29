@@ -87,4 +87,3 @@ export class MyImageCreate extends React.Component{
         );
     }
 }
-MEDIA_URL
