@@ -61,9 +61,10 @@ urlpatterns = [
 ]
 
 if settings.DEBUG is False:
-    extensions = staticfiles_urlpatterns()
+    #extensions = staticfiles_urlpatterns()
     #extensions += [path('media/<str:path>', serve, {'document_root': settings.MEDIA_ROOT})]
-    extensions += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    #extensions += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    extensions = []
     extensions += [re_path('.*', TemplateView.as_view(template_name='index.html')),]
 else:
     extensions = [
