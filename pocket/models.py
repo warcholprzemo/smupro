@@ -29,3 +29,7 @@ class Blog(models.Model):
 
     class Meta:
         ordering = ['-id']
+
+
+class MyImage(models.Model):
+    image = models.ImageField()

@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
+from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path, re_path
 from django.views.generic import TemplateView
 
 from multiplex.views import HallList
-from pocket.views import BlogList, SomeDataList, SomeDataPost, BlogDetail
+from pocket.views import BlogList, SomeDataList, SomeDataPost, BlogDetail, MyImageCreate, MyImageList
 
 
 
@@ -54,7 +55,9 @@ urlpatterns = [
     path('api/tictactoe/', include('tictactoe.urls')),
     path('api/blog/', BlogList.as_view(), name='blog_list'),
     path('api/blog/<int:pk>/', BlogDetail.as_view(), name='blog_detail'),
-]
+    path('api/myimage/create/', MyImageCreate.as_view(), name='myimage_create'),
+    path('api/myimage/list/', MyImageList.as_view(), name='myimage_list'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG is False:
     extensions = staticfiles_urlpatterns()

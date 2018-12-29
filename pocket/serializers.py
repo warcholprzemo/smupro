@@ -1,6 +1,6 @@
 from next_prev import next_in_order, prev_in_order
 from rest_framework import serializers
-from pocket.models import Blog, SomeData
+from pocket.models import Blog, SomeData, MyImage
 
 
 class SomeDataSerializer(serializers.ModelSerializer):
@@ -42,3 +42,8 @@ class BlogNextPrevSerializer(serializers.ModelSerializer):
             'next_instance': serialized_next,
         }
 
+
+class MyImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MyImage
+        fields = '__all__'

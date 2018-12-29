@@ -3,8 +3,8 @@ import random
 from rest_framework import generics
 from rest_framework.exceptions import APIException
 
-from pocket.models import Blog, SomeData
-from pocket.serializers import BlogSerializer, SomeDataSerializer, BlogNextPrevSerializer
+from pocket.models import Blog, SomeData, MyImage
+from pocket.serializers import BlogSerializer, SomeDataSerializer, BlogNextPrevSerializer, MyImageSerializer
 
 
 class PocketException(APIException):
@@ -35,3 +35,13 @@ class BlogList(generics.ListAPIView):
 class BlogDetail(generics.RetrieveAPIView):
     queryset = Blog.objects.filter(published=True)
     serializer_class = BlogNextPrevSerializer
+
+
+class MyImageCreate(generics.CreateAPIView):
+    queryset = MyImage.objects.all()
+    serializer_class = MyImageSerializer
+
+
+class MyImageList(generics.ListAPIView):
+    queryset = MyImage.objects.all()
+    serializer_class = MyImageSerializer

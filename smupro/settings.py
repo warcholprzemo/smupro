@@ -129,6 +129,9 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'                                 # WhiteNoiseMiddleware likes it!
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')     # WhiteNoiseMiddleware likes it!
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+MEDIA_URL = "/media/"
+
 
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:3000',

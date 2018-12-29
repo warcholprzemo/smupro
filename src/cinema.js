@@ -23,10 +23,11 @@ export class CinemaList extends React.Component{
             return response.json();
         })
         .then(responseJson => {
+            console.log("responseJson", responseJson);
             this.setState({
-                cinemas: responseJson,
+                cinemas: responseJson, //.data
             });
-        });
+        })
     }
 
     render(){
@@ -68,7 +69,7 @@ export class CinemaList extends React.Component{
 
 export class CinemaEdit extends React.Component{
     render(){
-        const endpoint_url=API_URL + '/api/multiplex/cinemas/' + this.props.match.params.id +"/";
+        const endpoint_url = API_URL + '/api/multiplex/cinemas/' + this.props.match.params.id +"/";
         return(
             <div>
                 <SomeDataList endpoint_url={endpoint_url}
