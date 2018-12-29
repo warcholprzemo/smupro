@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path, re_path
 from django.views.generic import TemplateView
-from django.views.static import serve
+from django.contrib.staticfiles.views import serve
 
 from multiplex.views import HallList
 from pocket.views import BlogList, SomeDataList, SomeDataPost, BlogDetail, MyImageCreate, MyImageList
@@ -62,7 +62,8 @@ urlpatterns = [
 
 if settings.DEBUG is False:
     extensions = staticfiles_urlpatterns()
-    extensions += [path('media/<str:path>', serve, {'document_root': settings.MEDIA_ROOT})]
+    #extensions += [path('media/<str:path>', serve, {'document_root': settings.MEDIA_ROOT})]
+    extensions += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     extensions += [re_path('.*', TemplateView.as_view(template_name='index.html')),]
 else:
     extensions = [
