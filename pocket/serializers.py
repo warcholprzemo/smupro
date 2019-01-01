@@ -44,6 +44,12 @@ class BlogNextPrevSerializer(serializers.ModelSerializer):
 
 
 class MyImageSerializer(serializers.ModelSerializer):
+    size = serializers.SerializerMethodField()
+
+    def get_size(self, instance):
+        """It is so smart that get_xxx handles xxx field :-)"""
+        return [instance.image.width, instance.image.height]
+
     class Meta:
         model = MyImage
-        fields = '__all__'
+        fields = ('id', 'image', 'size')
