@@ -123,10 +123,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'warcholprzemo-bucket'
+
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+
+#ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+
 STATICFILES_DIRS = [
      os.path.join(BASE_DIR, "dist"),  # copy files from here into staticfiles (WhiteNoiseMiddleware likes it!)
 ]
-STATIC_URL = '/static/'                                 # WhiteNoiseMiddleware likes it!
+#STATIC_URL = '/static/'                                 # WhiteNoiseMiddleware likes it!
+STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')     # WhiteNoiseMiddleware likes it!
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
