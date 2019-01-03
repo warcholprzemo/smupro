@@ -140,7 +140,7 @@ STATICFILES_DIRS = [
 ]
 #STATIC_URL = '/static/'                                 # WhiteNoiseMiddleware likes it!
 STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')     # WhiteNoiseMiddleware likes it!
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')     # WhiteNoiseMiddleware likes it!
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 MEDIA_URL = "/media/"
