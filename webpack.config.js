@@ -47,7 +47,7 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         filename: "./staticfiles/index.js",
-        publicPath: "https://s3.eu-west-2.amazonaws.com/warcholprzemo-bucket/static/"
+        publicPath: "https://s3.eu-west-2.amazonaws.com/warcholprzemo-bucket/"
     },
     plugins: [
         new HtmlWebPackPlugin({
