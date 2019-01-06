@@ -33,7 +33,7 @@ module.exports = {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'file-loader',
                 options: {
-                    name: '../[hash].[ext]'
+                    publicPath: "https://s3.eu-west-2.amazonaws.com/warcholprzemo-bucket/"
                 }
             },
             {
