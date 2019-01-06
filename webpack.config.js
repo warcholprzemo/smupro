@@ -33,7 +33,7 @@ module.exports = {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'file-loader',
                 options: {
-                    outputPath: "../",
+                    name: '../[hash].[ext]'
                 }
             },
             {
