@@ -32,7 +32,9 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'file-loader',
-                options: {}
+                options: {
+                    publicPath: "../",
+                }
             },
             {
                 test: /\.html$/,
@@ -46,7 +48,6 @@ module.exports = {
     output: {
         filename: "./staticfiles/index.js",
         publicPath: "https://s3.eu-west-2.amazonaws.com/warcholprzemo-bucket/",
-        path: "./"
     },
     plugins: [
         new HtmlWebPackPlugin({
