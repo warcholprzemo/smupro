@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['shielded-beach-87349.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -172,3 +171,8 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+if DEBUG:
+    INSTALLED_APPS += [
+        'django.contrib.admin',
+    ]
