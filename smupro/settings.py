@@ -162,7 +162,8 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'warcholprzemo-bucket'
 AWS_S3_HOST = 's3.eu-west-2.amazonaws.com'
-AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = "%s.%s" % (AWS_STORAGE_BUCKET_NAME, AWS_S3_HOST)
+print("STATIC_URL", AWS_S3_CUSTOM_DOMAIN)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #STATIC_ROOT = '/static/'
 STATIC_URL = "%s%s%s" % ('https://', AWS_STORAGE_BUCKET_NAME, '.s3.amazonaws.com/')
