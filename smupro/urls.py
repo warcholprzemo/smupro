@@ -46,6 +46,7 @@ from pocket.views import BlogList, SomeDataList, SomeDataPost, BlogDetail, MyIma
 # Wire up our API using automatic URL routing
 # Additionally, we include login URLs for the browsable API
 
+# TODO: recreate api/myimage/create/ with some password
 
 urlpatterns = [
     path('api/multiplex/', include('multiplex.urls')),
@@ -55,7 +56,7 @@ urlpatterns = [
     path('api/tictactoe/', include('tictactoe.urls')),
     path('api/blog/', BlogList.as_view(), name='blog_list'),
     path('api/blog/<int:pk>/', BlogDetail.as_view(), name='blog_detail'),
-    path('api/myimage/create/', MyImageCreate.as_view(), name='myimage_create'),
+    #path('api/myimage/create/', MyImageCreate.as_view(), name='myimage_create'),
     path('api/myimage/list/', MyImageList.as_view(), name='myimage_list'),
 ]
 
