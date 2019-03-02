@@ -118,27 +118,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-
-
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
-
 #ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 
 STATICFILES_DIRS = [
      os.path.join(BASE_DIR, "dist"),  # copy files from here into staticfiles (WhiteNoiseMiddleware likes it!)
 ]
-#STATIC_URL = '/static/'                                 # WhiteNoiseMiddleware likes it!
-
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')     # WhiteNoiseMiddleware likes it!
-
-#MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
-#MEDIA_URL = "/media/"
-
 
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:3000',
@@ -178,3 +163,4 @@ if DEBUG:
     INSTALLED_APPS += [
         'django.contrib.admin',
     ]
+    del DEFAULT_FILE_STORAGE
